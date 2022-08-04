@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const constant = require("../Utils/constant");
+const constants = require("../Utils/constant");
 
 const ticketSchema = new mongoose.Schema(
   {
@@ -19,11 +19,11 @@ const ticketSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      default: constant.ticketStatus.open,
+      default: constants.ticketStatus.open,
       enum: [
-        constant.ticketStatus.open,
-        constant.ticketStatus.blocked,
-        constant.ticketStatus.closed,
+        constants.ticketStatus.open,
+        constants.ticketStatus.blocked,
+        constants.ticketStatus.closed,
       ],
     },
     reporter: {

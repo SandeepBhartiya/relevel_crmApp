@@ -74,10 +74,29 @@ const verifyTickets=(req,res,next)=>{
             message:"Failed!Description is not Provided"
         })
     }
-    if(req.body.status==constants.ticketStatus.open)
+
+    if(req.body.ticketPriority<0 ||req.body.ticketPriority>4)
     {
-        
+        return res.status(400).send({
+            message:"Failed! Ticket Priority Out of Range(0-4).."
+        })
     }
+
+    const Status=[constants.ticketStatus.open,constants.ticketStatus.closed,constants.ticketStatus.blocked];
+
+    if(req.body.status==constants.ticketStatus.closed||req.body.status==constants.ticketStatus.blocked)
+    {
+        return res.status(400).send({
+            message:"Failed! Ticket Status can't be Blocked|Closed"
+        })
+    }
+
+    // if(!Status.includes(req.body.status))
+    // {
+    //     return res.status(400).send({
+    //         message:"Status Provided is not Correct."
+    //     })
+    // }
 
 next();
 }

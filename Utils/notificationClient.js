@@ -1,38 +1,29 @@
 const Client=require("node-rest-client").Client;
-
-const client=new Client();
-
+const client=new Client()
 
 module.exports=(subject,content,recepients,requester)=>{
-    try{
     const reqBody={
         subject:subject,
+        recepientEmails:recepients,
         content:content,
-        recepients:recepients,
         requester:requester
     }
- 
     const reqHeader={
-        "Content-Type":"applicatiom/json"
+        "Content-Type":"application/json"
     }
 
     const args={
-             reqBody,
-        reqHeader
+        data:reqBody,
+        headers:reqHeader
     }
-   console.log(args)
 
-   
-
+    try{
         client.post("http://localhost:8080/notiserv/api/v1/notification",args,(data,res)=>{
-            console.log("Request sent");
-            console.log(data);
-            console.log(res);
-        });
-
-       
+            console.log("Request Send");
+            console.log(data)
+        })
     }catch(err)
     {
-            console.log(err.message)
+        console.log(err.message);
     }
 }
