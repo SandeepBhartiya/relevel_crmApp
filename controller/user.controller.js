@@ -19,7 +19,7 @@ exports.findAll = async (req,res)=>{
     
         const users=await User.find(queryObj);
          res.status(200).send(objectConverter.userResponse(users));
-        console.log("dsdsd")
+       
     }catch(err)
     {
         console.log("Error While Fetching all the users");

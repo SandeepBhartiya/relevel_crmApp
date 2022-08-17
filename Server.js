@@ -20,7 +20,7 @@ db.on("err",()=>{
 });
 db.once("open",()=>{
     console.log("Connected to mongoDB")
-    init()
+    //init()
 });
 
 
@@ -57,6 +57,6 @@ require("./routes/auth.route")(app);
  require("./routes/user.route")(app);
  require("./routes/ticket.route")(app);
 
- app.listen(serverconf.PORT,()=>{
+module.exports= app.listen(serverconf.PORT,()=>{
     console.log("I Am Listening At",serverconf.PORT)
 });

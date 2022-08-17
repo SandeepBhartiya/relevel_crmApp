@@ -7,7 +7,6 @@ exports.createTicket=async (req,res)=>{
     
 
     try{
-
         const ticketObj={
             title:req.body.title,
             ticketPriority:req.body.ticketPriority,
